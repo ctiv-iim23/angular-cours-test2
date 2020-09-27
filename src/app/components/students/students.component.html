@@ -1,0 +1,13 @@
+<div class="students-number">
+  <div>Students number to generate</div>
+  <input #students (keyup.enter)="generateStudents(students.value)" minlength="1" maxlength="2" size="2" required />
+  <button (click)="generateStudents(students.value)" class="randomize">Randomize</button>
+</div>
+
+<div class="students-container">
+  <div *ngFor="let user of usersList" class="student-item">
+    <div *ngIf="canBeShown(user)">
+      <app-student [student]="user" (studentDeleted)="deleteStudent($event)"></app-student>
+    </div>
+  </div>
+</div>
